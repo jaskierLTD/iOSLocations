@@ -8,14 +8,15 @@
 
 import Foundation
 import SwiftyJSON
-
-class User{
+// also struct , code style
+struct User {
     var name: String?
     var email: String?
     var pictureURL: String?
-    static let currentUser = User()
+    static let currentUser = User() // better to move it to some manager, here it's useless
     
-    func setUser(_ json: JSON){
+    // JsonDecoder can handle it without additional dependency
+    func setUser(_ json: JSON) {
         self.name = json["name"].string
         self.email = json["email"].string
         

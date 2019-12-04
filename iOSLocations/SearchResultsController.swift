@@ -12,22 +12,17 @@ import UIKit
 
 class SearchResultsController: UITableViewController {
     
-    var searchResults: [String]!
+    var searchResults: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.searchResults = Array()
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cellIdentifier")
     }
     
     // MARK: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.searchResults.count
+        return searchResults.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -39,6 +34,7 @@ class SearchResultsController: UITableViewController {
     override func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath){
         self.dismiss(animated: true, completion: nil)
+        // All this logic should go outside to networkmanager, over messy
         let urlpath = "https://maps.googleapis.com/maps/api/geocode/json?address=\(self.searchResults[indexPath.row])&key=AIzaSyBUJBryZEbNbkfV6NHQuhPVmuc9BnjxNBE&sensor=false".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let url = URL(string: urlpath)
         let task = URLSession.shared.dataTask(with: url! as URL) { (data, response, error) -> Void in
@@ -62,7 +58,7 @@ class SearchResultsController: UITableViewController {
                             .value(forKey: "location") as! NSDictionary)
                             .value(forKey: "lng")) as! Double
 
-                        jsonURLString = "https://api.darksky.net/forecast/86f373a5742ca2ac810248dde73f9009/\(lat),\(lon)"
+                        jsonURLString = "https://api.darksky.net/forecast/86f373a5742ca2ac810248dde73f9009/\(lat),\(lon)"// you can use append method for that
                         locationString = self.searchResults[indexPath.row]
                         savedToCoreData = false
                     }
@@ -72,7 +68,7 @@ class SearchResultsController: UITableViewController {
         task.resume()
     }
     
-    func reloadDataWithArray(_ array:[String]){
+    func reloadDataWithArray(_ array: [String]) {
         self.searchResults = array
         self.tableView.reloadData()
     }

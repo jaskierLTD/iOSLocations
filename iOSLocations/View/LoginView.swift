@@ -17,16 +17,17 @@ class LoginView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if AccessToken.current != nil {
-            logoutFacebook.isHidden = true
-            FacebookManager.getUserData(completion: {
-                self.loginFacebook.setTitle("Вхід як \(String(describing: User.currentUser.name!))", for: .normal)
-            })
-        }
+        guard AccessToken.current != nil else { return }
+        logoutFacebook.isHidden = true
+        FacebookManager.getUserData(completion: {
+            self.loginFacebook.setTitle("Вхід як \(String(describing: User.currentUser.name!))", for: .normal)// but name is String already, you are casting String? to String, just unwrap it
+        })
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if AccessToken.current?.tokenString != nil && loginSuccess == true{
+        //segues
+        if AccessToken.current?.tokenString != nil && loginSuccess {
             performSegue(withIdentifier: "startViewID", sender: self)
         }
     }
@@ -40,20 +41,17 @@ class LoginView: UIViewController {
         loginFacebook.setTitle("Вхід через Facebook", for: .normal)
     }
     
-    @IBAction func facebookLoginButton(_ sender: UIButton){
+    @IBAction func facebookLoginButton(_ sender: UIButton) {
         if AccessToken.current != nil {
             self.loginSuccess = true
-            self.viewDidAppear(true)
-        } else
-        {
-            FacebookManager.shared.logIn(permissions: ["public_profile", "email"], from: self, handler:
-            { (result, error) in
+            self.viewDidAppear(true) // don't call this method directly ever
+        } else {
+            FacebookManager.shared.logIn(permissions: ["public_profile", "email"], from: self, handler: { (result, error) in
                 if error == nil {
-                        
-                        FacebookManager.getUserData(completion: {
+                    FacebookManager.getUserData(completion: {
                         self.loginSuccess = true
                         self.viewDidAppear(true)
-                        })
+                    })
                 }
             })
         }
