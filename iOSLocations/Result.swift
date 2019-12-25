@@ -7,9 +7,9 @@
 //
 
 import UIKit
-
-class Result: Decodable{
-
+// better to use struct here and create another struct for nested object
+struct Result: Decodable {
+    
     var summary: String?
     var icon: String?
     var temperature: Double?
@@ -26,13 +26,13 @@ class Result: Decodable{
         case longitude
         case timezone
     }
-    
-        enum CurrentlyCodingKeys: String, CodingKey {
-        case summary = "summary"
-        case icon = "icon"
-        case temperature = "temperature"
-        case humidity = "humidity"
-        case windSpeed = "windSpeed"
+    // rawValues are the same as names
+    enum CurrentlyCodingKeys: String, CodingKey {
+        case summary
+        case icon
+        case temperature
+        case humidity
+        case windSpeed
     }
     
     required init(from decoder: Decoder) throws {
@@ -41,7 +41,7 @@ class Result: Decodable{
         self.latitude = try? container.decode(Double.self, forKey: .latitude)
         self.longitude = try? container.decode(Double.self, forKey: .longitude)
         self.timezone = try? container.decode(String.self, forKey: .timezone)
-
+        
         // Nested values
         let currentlyContainer = try container.nestedContainer(keyedBy: CurrentlyCodingKeys.self, forKey: .currently)
         self.summary = try currentlyContainer.decode(String.self, forKey: .summary)

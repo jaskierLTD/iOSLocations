@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		883BBC70239656FB008B5EC4 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 883BBC6F239656FA008B5EC4 /* Result.swift */; };
+		190A5BCC23980E6300135FC7 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190A5BCB23980E6300135FC7 /* Result.swift */; };
 		88ABBEC42396109100AB10EC /* FacebookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88ABBEC32396109100AB10EC /* FacebookManager.swift */; };
 		88ABBEC723961B9C00AB10EC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88ABBEC623961B9B00AB10EC /* User.swift */; };
 		88C18F6A2391B8F300F31E36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C18F692391B8F300F31E36 /* AppDelegate.swift */; };
@@ -25,9 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		190A5BCB23980E6300135FC7 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		2B5BF869B52A243BC6179C80 /* Pods-iOSLocations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSLocations.debug.xcconfig"; path = "Target Support Files/Pods-iOSLocations/Pods-iOSLocations.debug.xcconfig"; sourceTree = "<group>"; };
 		7C3679350075E96A8EC20417 /* Pods_iOSLocations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSLocations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		883BBC6F239656FA008B5EC4 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Result.swift; path = ../../teamvoy/teamvoy/Result.swift; sourceTree = "<group>"; };
 		88ABBEC32396109100AB10EC /* FacebookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookManager.swift; sourceTree = "<group>"; };
 		88ABBEC5239612D000AB10EC /* iOSLocations.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iOSLocations.entitlements; sourceTree = "<group>"; };
 		88ABBEC623961B9B00AB10EC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -119,8 +119,8 @@
 		88FDBDE32395DCE800917F52 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				190A5BCB23980E6300135FC7 /* Result.swift */,
 				88C18F6B2391B8F300F31E36 /* SceneDelegate.swift */,
-				883BBC6F239656FA008B5EC4 /* Result.swift */,
 				88ABBEC623961B9B00AB10EC /* User.swift */,
 				88ABBEC5239612D000AB10EC /* iOSLocations.entitlements */,
 				88C18F7A2391B8FB00F31E36 /* Info.plist */,
@@ -276,11 +276,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				88FB9A4F23940DD300805B06 /* TableLocations.swift in Sources */,
-				883BBC70239656FB008B5EC4 /* Result.swift in Sources */,
 				88DBA43E2395C991002618AC /* ProfileView.swift in Sources */,
 				88C18F742391B8F400F31E36 /* iOSLocations.xcdatamodeld in Sources */,
 				88C18F6E2391B8F300F31E36 /* LoginView.swift in Sources */,
 				88FB9A512394316E00805B06 /* WeatherView.swift in Sources */,
+				190A5BCC23980E6300135FC7 /* Result.swift in Sources */,
 				88FB9A552394456700805B06 /* SearchResultsController.swift in Sources */,
 				88ABBEC42396109100AB10EC /* FacebookManager.swift in Sources */,
 				88C18F6A2391B8F300F31E36 /* AppDelegate.swift in Sources */,

@@ -18,13 +18,13 @@ class ProfileView: UIViewController {
         super.viewDidLoad()
         nameLabel.text = User.currentUser.name
         emailLabel.text = User.currentUser.email
-        imageView.image = try! UIImage(data: Data(contentsOf: URL(string: User.currentUser.pictureURL!)!))
-        imageView.layer.cornerRadius = imageView.frame.size.width / 2
+        imageView.image = try! UIImage(data: Data(contentsOf: URL(string: User.currentUser.pictureURL!)!))// create some func for creating UIImage from url
+        imageView.layer.cornerRadius = imageView.bounds.width / 2
         imageView.layer.borderWidth = 1.0
         imageView.layer.borderColor = UIColor.red.cgColor
         imageView.clipsToBounds = true
     }
-    
+    // segues, i'm encouraging you not to use them at all
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         if segue.identifier == "clientLogout" {
             FacebookManager.shared.logOut()
